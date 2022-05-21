@@ -28,7 +28,7 @@ FROM php as php-ext-intl
 RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
-    libicu-dev && \
+    icu-dev && \
   docker-php-ext-configure intl
 RUN docker-php-ext-install -j"$(nproc)" intl 
 
@@ -106,7 +106,8 @@ RUN \
     apache2-ctl \
     apache2-proxy \
     tzdata \
-    libzip-dev
+    libzip-dev \
+    icu-dev
 
 RUN \   
   echo "**** cleanup ****" && \
