@@ -9,10 +9,6 @@ RUN apk add --no-cache wget unzip
 RUN wget https://github.com/RainLoop/rainloop-webmail/releases/download/${TAG_VERSION}/rainloop-${TAG_VERSION//v/}.zip && \
 	unzip -d src rainloop-${TAG_VERSION//v/}.zip && find .
 
-ARG VERSION_HTMLTEMPLATE
-RUN apk add git && \
-  git clone --depth 1 --branch $VERSION_HTMLTEMPLATE https://github.com/newargus/php-testsite.git .
-
 # build stage - PHP Modules
 
 FROM php as php-ext-pdo
