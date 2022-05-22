@@ -100,6 +100,7 @@ COPY ./config/app.conf  /etc/apache2/conf.d/app.conf
 RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
+    su-exec \
     nano \
     mariadb-client \
     libwebp-dev \
@@ -134,11 +135,6 @@ RUN \
   sed -i 's#AllowOverride [Nn]one#AllowOverride All#' /etc/apache2/httpd.conf && \
   sed -i '$iLoadModule proxy_module modules/mod_proxy.so' /etc/apache2/httpd.conf
 
-RUN \    
-  mkdir -p "/data" && mkdir -p "/data/sessions"  && \
-  chown www-data:www-data /data && \
-  chmod 0777 /data
-
-VOLUME [ "/data" ]
+VOLUME [ "/var/www/html/data" ]
 ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 80 9000
