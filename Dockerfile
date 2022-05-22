@@ -31,7 +31,7 @@ RUN docker-php-ext-install -j"$(nproc)" intl
 FROM php as php-ext-gd
 RUN \
   echo "**** install packages ****" && \
-  apk add --no-cache \
+   \
     libwebp-dev \
     libjpeg \
     libjpeg-turbo \
@@ -48,7 +48,11 @@ RUN \
   docker-php-ext-install -j"$(nproc)" gd
 
 FROM php as php-ext-zip
-RUN docker-php-ext-install -j"$(nproc)" zip
+RUN \
+  echo "**** install packages ****" && \
+  apk add --no-cache \
+    libzip-dev && \
+    docker-php-ext-install -j"$(nproc)" zip
 
 
 # FROM php as php-ext-zip
