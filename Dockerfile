@@ -33,16 +33,17 @@ RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
     libwebp-dev \
+    libjpeg \
     libjpeg-turbo \
     libpng-dev \
     libxpm-dev \
     freetype-dev \
     libpng-dev && \
   docker-php-ext-configure gd \
+    --enable-gd \
     --with-webp=/usr/include/ \
-    --with-png=/usr/include/ \
-    --with-zlib=/usr/include/ \
     --with-freetype=/usr/include/  \
+    --with-xpm=/usr/include/  \
     --with-jpeg=/usr/include/ && \
   docker-php-ext-install -j"$(nproc)" gd
 
