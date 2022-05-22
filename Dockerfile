@@ -91,7 +91,7 @@ COPY --from=php-ext-zip /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 COPY --from=php-ext-zip /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
 
 WORKDIR /var/www/html
-COPY --from=dl /app .
+COPY --from=dl /app/src .
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./config/custom.ini /usr/local/etc/php/conf.d/custom.ini
 COPY ./config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
