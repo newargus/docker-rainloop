@@ -36,7 +36,7 @@ RUN \
     libjpeg62-turbo-dev \
     libpng-dev \
     libxpm-dev \
-    libfreetype6-dev \
+    libfreetype6 \
     libpng-dev \
     libjpeg-turbo-dev && \
   docker-php-ext-configure gd \
