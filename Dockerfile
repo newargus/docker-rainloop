@@ -33,12 +33,11 @@ RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
     libwebp-dev \
-    libjpeg62-turbo-dev \
+    libjpeg-turbo \
     libpng-dev \
     libxpm-dev \
-    libfreetype6 \
-    libpng-dev \
-    libjpeg-turbo-dev && \
+    freetype-dev \
+    libpng-dev && \
   docker-php-ext-configure gd \
     --with-webp=/usr/include/ \
     --with-png=/usr/include/ \
@@ -98,12 +97,11 @@ RUN \
     nano \
     mariadb-client \
     libwebp-dev \
-    libjpeg62-turbo-dev \
+    libjpeg-turbo \
     libpng-dev \
     libxpm-dev \
-    libfreetype6-dev \
+    freetype-dev \
     libpng-dev \
-    libjpeg-turbo-dev \
     icu-libs \
     jpegoptim \
     optipng \
