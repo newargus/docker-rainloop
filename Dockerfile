@@ -31,10 +31,11 @@ RUN docker-php-ext-install -j"$(nproc)" intl
 FROM php as php-ext-gd
 RUN \
   echo "**** install packages ****" && \
-   \
+  apk add --no-cache \
     libwebp-dev \
     libjpeg \
     libjpeg-turbo \
+    libjpeg-turbo-dev \
     libpng-dev \
     libxpm-dev \
     freetype-dev \
@@ -103,6 +104,7 @@ RUN \
     mariadb-client \
     libwebp-dev \
     libjpeg-turbo \
+    libjpeg-turbo-dev \
     libpng-dev \
     libxpm-dev \
     freetype-dev \
