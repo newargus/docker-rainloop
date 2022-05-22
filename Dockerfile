@@ -32,12 +32,19 @@ FROM php as php-ext-gd
 RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
+    libwebp-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libxpm-dev \
+    libfreetype6-dev \
     libpng-dev \
     libjpeg-turbo-dev && \
   docker-php-ext-configure gd \
-    --with-gd \
-    --with-jpeg-dir=/usr/include/ \
-    --with-png-dir=/usr/include/ && \
+    --with-webp=/usr/include/ \
+    --with-png=/usr/include/ \
+    --with-zlib=/usr/include/ \
+    --with-freetype=/usr/include/  \
+    --with-jpeg=/usr/include/ && \
   docker-php-ext-install -j"$(nproc)" gd
 
 FROM php as php-ext-zip
@@ -90,10 +97,11 @@ RUN \
   apk add --no-cache \
     nano \
     mariadb-client \
-    freetype \
-    libpng \
-    libjpeg-turbo \
-    freetype-dev \
+    libwebp-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libxpm-dev \
+    libfreetype6-dev \
     libpng-dev \
     libjpeg-turbo-dev \
     icu-libs \
